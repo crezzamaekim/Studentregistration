@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>PHP Registration Form</title>
+  <style>
+    input[type=radio], input[type=checkbox] { 
+      width: 20px; 
+    }  
+
+    * {  
+      padding: 0;  
+      margin: 0;  
+      box-sizing: border-box;  
+      font-family: 'Helvetica', 'Arial', sans-serif;
+    }  
+
+    body {  
+      margin: 50px auto;  
+      text-align: center;  
+      width: 800px;  
+    }  
+
+    input[type=reset], input[type=submit] {  
+      border: 3px solid #000;    
+      border-radius: 2px;    
+      color: #000;    
+      display: block;    
+      font-size: 1em;    
+      font-weight: bold;    
+      margin: 1em auto;    
+      padding: 1em 4em;    
+      position: relative;    
+      text-transform: uppercase;    
+      background: #fff;
+      cursor: pointer;
+    }    
+
+    input[type=reset]:hover, input[type=submit]:hover {    
+      color: #1A33FF;    
+    }    
+
+    input {  
+      border: 2px solid #ccc;  
+      font-size: 1rem;  
+      font-weight: 100;  
+      padding: 10px;  
+      width: 100%;
+      max-width: 400px;
+      margin: 10px 0;
+    }  
+
+    textarea {  
+      border: 2px solid #ccc;  
+      font-size: 1rem;  
+      font-weight: 100;  
+      padding: 10px;  
+      width: 200px; /* Set the width to 200px */
+      height: 100px; /* Set the height to 100px */
+      margin: 10px 0;
+    }  
+
+    form {  
+      margin: 20px auto;  
+      padding: 20px;  
+      border: 5px solid #ccc;  
+      background: #f5f5dc; /* Cream color */
+      text-align: left;
+    }  
+
+    h1 {  
+      font-size: 2rem;  
+      font-weight: bold;  
+      text-align: center;  
+      letter-spacing: 3px;  
+      color: #000;  
+      text-transform: uppercase;  
+      margin-bottom: 20px;
+    }  
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 10px;
+      vertical-align: top;
+    }
+
+    b {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    select {
+      padding: 10px;
+      width: calc(33.33% - 10px);
+      margin-right: 10px;
+    }
+    </style>
+</head>
+<body>
+  <h1>Student Registration Form</h1>
+  <form method="post" enctype="multipart/form-data" action="?">  
+    <table>  
+      <tr>  
+        <td colspan="2"><?php echo @$msg; ?></td>  
+      </tr>  
+      <tr>  
+        <td><b>Full Name</b></td>  
+        <td><input type="text" placeholder="Enter name" name="n" pattern="[a-zA-Z ]*" required /></td>  
+      </tr>  
+      <tr>  
+        <td><b>Email</b></td>  
+        <td><input type="email" name="e" placeholder="Enter Email" /></td>  
+      </tr>  
+      <tr>  
+        <td><b>Password</b></td>  
+        <td><input type="password" name="p" placeholder="Enter Password" /></td>  
+      </tr>  
+      <tr>  
+        <td><b>Address</b></td>  
+        <td><textarea name="add" placeholder="Enter Address"></textarea></td>  
+      </tr>  
+      <tr>  
+        <td><b>Mobile Number</b></td>  
+        <td><input type="text" pattern="[0-9]*" name="m" placeholder="Enter number" /></td>  
+      </tr>  
+      <tr>  
+        <td><b>Select your Gender</b></td>  
+        <td>  
+          Male <input type="radio" name="g" value="m"/>  
+          Female <input type="radio" name="g" value="f"/>  
+        </td>  
+      </tr>  
+      <tr>  
+        <td><b>Upload your Profile Pic</b></td>  
+        <td><input type="file" name="pic"/></td>  
+      </tr>  
+      <tr>  
+        <td><b>Date of Birth</b></td>  
+        <td>  
+          <select name="mm">  
+            <option value="">Month</option>  
+            <?php for($i=1;$i<=12;$i++) { echo "<option value ='$i'>".$i."</option>"; } ?>  
+          </select>  
+          <select name="dd">  
+            <option value="">Date</option>  
+            <?php for($i=1;$i<=31;$i++) { echo "<option value ='$i'>".$i."</option>"; } ?>  
+          </select>  
+          <select name="yy">  
+            <option value="">Year</option>  
+            <?php for($i=1900;$i<=2015;$i++) { echo "<option value ='$i'>".$i."</option>"; } ?>  
+          </select>  
+        </td>  
+      </tr>  
+      <tr>  
+        <td><b>Mother's Name</b></td>  
+        <td><input type="text" placeholder="Enter Mother's Name" name="mother" /></td>  
+      </tr>  
+      <tr>  
+        <td><b>Occupation</b></td>  
+        <td><input type="text" placeholder="Enter Mother's Occupation" name="mother_occupation" /></td>  
+      </tr>  
+      <tr>  
+        <td><b>Father's Name</b></td>  
+        <td><input type="text" placeholder="Enter Father's Name" name="father" /></td>  
+      </tr>  
+      <tr>  
+        <td><b>Occupation</b></td>  
+        <td><input type="text" placeholder="Enter Father's Occupation" name="father_occupation" /></td>  
+      </tr>  
+      
+      <tr>  
+        <td><b>Previous Elementary School</b></td>  
+        <td><input type="text" placeholder="Enter Elementary School" name="elementary" /></td>  
+      </tr>  
+      <tr>  
+        <td><b>Previous High School</b></td>  
+        <td><input type="text" placeholder="Enter High School" name="highschool" /></td>  
+      </tr>  
+      <tr>  
+        <td colspan="2" align="center">  
+          <input type="submit" name="save" value="Register"/>  
+          <input type="reset" value="Reset"/>  
+        </td>  
+      </tr>  
+      <tr>  
+        <td colspan="2"><?php echo @$msg; ?></td>  
+      </tr>
+    </table>  
+  </form>  
+</body>  
+</html>  
+<?php  
+if(isset($save))  
+{  
+    // Extracting form data
+    extract($_POST);  
+
+    // Constructing date of birth
+    $dob = $yy . "-" . $mm . "-" . $dd;  
+
+    // Handling image upload
+    $img = isset($_FILES['pic']['name']) ? $_FILES['pic']['name'] : '';
+
+    // Check if email already exists in the database (replace 'your_table_name' and 'your_email_column' with your actual table and column names)
+    $sql = "SELECT * FROM your_table_name WHERE your_email_column = '$e'";
+    $result = mysqli_query($conn, $sql);
+
+    if(mysqli_num_rows($result) > 0)  
+    {  
+        $msg = "<font color='red'>" . ucfirst($e) . " already exists, choose another email</font>";  
+    }  
+    else  
+    {  
+        // Assuming you have code to insert data into your database table (replace this with your actual code)
+        $sql = "INSERT INTO your_table_name (name, email, password, address, mobile, gender, dob, mother_name, mother_occupation, father_name, father_occupation, elementary_school, high_school, profile_pic) VALUES ('$n', '$e', '$p', '$add', '$m', '$g', '$dob', '$mother', '$mother_occupation', '$father', '$father_occupation', '$elementary', '$highschool', '$img')";
+        $result = mysqli_query($conn, $sql);
+
+        // If the operation was successful
+        if($result)  
+        {  
+            $msg = "<font color='blue'>Your data has been saved</font>";  
+            echo '<script>alert("Form was successfully submitted");</script>'; // Alert message for successful submission
+            echo '<script>document.getElementById("submitBtn").value = "Submitted";</script>'; // Change the submit button text
+            echo '<script>document.getElementById("submitBtn").disabled = true;</script>'; // Disable the submit button
+            echo '<script>document.getElementById("resetBtn").value = "Submit another form";</script>'; // Change the reset button text
+        }  
+        else  
+        {  
+            $msg = "<font color='red'>Failed to save data</font>";  
+        }  
+    }  
+}  
+?>
